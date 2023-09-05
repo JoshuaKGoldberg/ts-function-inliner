@@ -1,7 +1,7 @@
 import gulp from "gulp";
 import ts from "gulp-typescript";
 
-import { transformerProgram } from "../dist/index.js";
+import { transformerProgram } from "../lib/index.js";
 
 gulp.task("default", function () {
 	return gulp
@@ -11,7 +11,7 @@ gulp.task("default", function () {
 				getCustomTransformers: (program) => ({
 					before: [transformerProgram(program)],
 				}),
-			})
+			}),
 		)
 		.pipe(gulp.dest("."));
 });

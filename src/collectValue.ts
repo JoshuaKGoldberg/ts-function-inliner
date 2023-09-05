@@ -1,8 +1,8 @@
 import ts from "typescript";
 
 export enum CollectedValue {
-	PropertyAccess = "property-access",
 	NameLike = "name-like",
+	PropertyAccess = "property-access",
 }
 
 export const collectValue = (node: ts.Node): CollectedValue | undefined => {

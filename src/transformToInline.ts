@@ -9,13 +9,13 @@ import { SmallFunctionLikeDeclaration } from "./types.js";
 export const transformToInline = (
 	callExpression: ts.CallExpression,
 	declaration: SmallFunctionLikeDeclaration,
-	context: ts.TransformationContext
+	context: ts.TransformationContext,
 ) => {
 	const parameters = new Map(
 		declaration.parameters.map((parameterName, index) => [
 			parameterName.name.getText(),
 			callExpression.arguments[index],
-		])
+		]),
 	);
 
 	const visitor = (node: ts.Node): ts.Node => {

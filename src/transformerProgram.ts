@@ -6,17 +6,16 @@ import { SmallFunctionLikeDeclaration } from "./types.js";
 
 export const transformerProgram = (program: ts.Program) => {
 	const transformerFactory: ts.TransformerFactory<ts.SourceFile> = (
-		context
+		context,
 	) => {
 		return (sourceFile) => {
 			const typeChecker = program.getTypeChecker();
 
 			const getDeclarationToInline = (
-				node: ts.CallExpression
+				node: ts.CallExpression,
 			): SmallFunctionLikeDeclaration | undefined => {
-				const declaration = typeChecker.getSymbolAtLocation(
-					node.expression
-				)?.valueDeclaration;
+				const declaration = typeChecker.getSymbolAtLocation(node.expression)
+					?.valueDeclaration;
 
 				return declaration && isSmallFunctionLikeDeclaration(declaration)
 					? declaration
@@ -30,7 +29,7 @@ export const transformerProgram = (program: ts.Program) => {
 						const result = transformToInline(
 							node,
 							functionDeclaration,
-							context
+							context,
 						);
 						return result;
 					}
@@ -39,7 +38,7 @@ export const transformerProgram = (program: ts.Program) => {
 				return ts.visitEachChild(node, visitor, context);
 			};
 
-			return ts.visitNode(sourceFile, visitor);
+			return ts.visitNode(sourceFile, visitor) as ts.SourceFile;
 		};
 	};
 

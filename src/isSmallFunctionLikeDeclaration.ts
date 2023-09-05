@@ -5,7 +5,7 @@ import { isFunctionDeclarationWithBody } from "./isFunctionDeclarationWithBody.j
 import { SmallFunctionLikeDeclaration } from "./types.js";
 
 export const isSmallFunctionLikeDeclaration = (
-	node: ts.Node
+	node: ts.Node,
 ): node is SmallFunctionLikeDeclaration => {
 	if (
 		!isFunctionDeclarationWithBody(node) ||
