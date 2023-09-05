@@ -40,7 +40,7 @@ The resultant code will function the same regardless of the transformation.
 Given the following function:
 
 ```ts
-function isNotFalsy(value: unknown) {
+export function isNotFalsy(value: unknown) {
 	return !!value;
 }
 ```

@@ -9,6 +9,7 @@
 		"pnpm-lock.yaml"
 	],
 	"words": [
+		"automerge",
 		"Codecov",
 		"codespace",
 		"commitlint",

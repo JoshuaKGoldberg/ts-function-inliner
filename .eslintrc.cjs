@@ -120,6 +120,14 @@ module.exports = {
 	reportUnusedDisableDirectives: true,
 	root: true,
 	rules: {
+		// These rules need to be configured for this repo and we like them on.
+		"n/no-unpublished-import": [
+			"error",
+			{
+				allowModules: ["gulp", "gulp-typescript"],
+			},
+		],
+
 		// These off/less-strict-by-default rules work well for this repo and we like them on.
 		"@typescript-eslint/no-unused-vars": ["error", { caughtErrors: "all" }],
 		"import/extensions": ["error", "ignorePackages"],

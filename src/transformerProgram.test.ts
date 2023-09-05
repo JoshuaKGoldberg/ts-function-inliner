@@ -6,7 +6,7 @@ import { transformerProgram } from "./transformerProgram.js";
 
 const compilerOptions: ts.CompilerOptions = {
 	module: ts.ModuleKind.ESNext,
-	moduleResolution: ts.ModuleResolutionKind.NodeJs,
+	moduleResolution: ts.ModuleResolutionKind.Node10,
 	skipLibCheck: true,
 	strict: true,
 	target: ts.ScriptTarget.ES2021,
