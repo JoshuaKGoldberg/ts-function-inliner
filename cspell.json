@@ -1,5 +1,30 @@
 {
 	"dictionaries": ["typescript"],
-	"ignorePaths": ["dist", "node_modules", "**/*.yml"],
-	"words": ["commitlint", "inlines"]
+	"ignorePaths": [
+		".github",
+		"CHANGELOG.md",
+		"coverage",
+		"lib",
+		"node_modules",
+		"pnpm-lock.yaml"
+	],
+	"words": [
+		"automerge",
+		"Codecov",
+		"codespace",
+		"commitlint",
+		"contributorsrc",
+		"conventionalcommits",
+		"gulpfile",
+		"inlines",
+		"knip",
+		"lcov",
+		"markdownlintignore",
+		"npmpackagejsonlintrc",
+		"outro",
+		"packagejson",
+		"quickstart",
+		"tsup",
+		"wontfix"
+	]
 }

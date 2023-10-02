@@ -1,13 +1,13 @@
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/prepare
-      - run: pnpm build
-      - run: node ./lib/index.js
+      - run: pnpm build || true
+      - run: pnpm lint
 
-name: Build
+name: Lint
 
 on:
   pull_request: ~

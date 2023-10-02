@@ -1,12 +1,12 @@
-import { format } from "prettier";
+import { format } from "@prettier/sync";
 import ts from "typescript";
 import { describe, expect, test } from "vitest";
 
-import { transformerProgram } from "./transformerProgram";
+import { transformerProgram } from "./transformerProgram.js";
 
 const compilerOptions: ts.CompilerOptions = {
 	module: ts.ModuleKind.ESNext,
-	moduleResolution: ts.ModuleResolutionKind.NodeJs,
+	moduleResolution: ts.ModuleResolutionKind.Node10,
 	skipLibCheck: true,
 	strict: true,
 	target: ts.ScriptTarget.ES2021,
@@ -19,7 +19,7 @@ const getResult = (before: string) => {
 		filePath,
 		before,
 		ts.ScriptTarget.ESNext,
-		/* setParentNodes */ true
+		/* setParentNodes */ true,
 	);
 
 	const fileMap = new Map<string, ts.SourceFile>([[filePath, sourceFile]]);
@@ -43,7 +43,7 @@ const getResult = (before: string) => {
 		host.writeFile,
 		/* cancellationToken */ undefined,
 		/* emitOnlyDtsFiles */ false,
-		{ before: [transformerProgram(program)] }
+		{ before: [transformerProgram(program)] },
 	);
 
 	return outputs["index.js"];
@@ -54,7 +54,7 @@ const normalizeFile = (text: string) =>
 
 function expectResultToBe(actual: string, expected: string) {
 	expect(normalizeFile(actual)).toBe(
-		normalizeFile([`"use strict";`, expected].join("\n"))
+		normalizeFile([`"use strict";`, expected].join("\n")),
 	);
 }
 
@@ -76,7 +76,7 @@ describe("transformerProgram", () => {
             }
             
             "abc".length + 3;
-        `
+        `,
 		);
 	});
 
@@ -99,7 +99,7 @@ describe("transformerProgram", () => {
             
             const value = 123;
             value++;
-        `
+        `,
 		);
 	});
 
@@ -120,7 +120,7 @@ describe("transformerProgram", () => {
             }
             
             !!"Boo! 👻".length;
-        `
+        `,
 		);
 	});
 
@@ -143,7 +143,7 @@ describe("transformerProgram", () => {
 
             "" !== undefined;
             undefined !== undefined;
-        `
+        `,
 		);
 	});
 });
