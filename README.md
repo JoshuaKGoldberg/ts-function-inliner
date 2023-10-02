@@ -1,4 +1,4 @@
-<h1 align="center">ts-function-inliner</h1>
+<h1 align="center">TypeScript Function Inliner</h1>
 
 <p align="center">TypeScript transformation that inlines calls to small functions. ⚡️</p>
 
@@ -6,7 +6,7 @@
 	<a href="#contributors" target="_blank">
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<img alt="All Contributors: 1" src="https://img.shields.io/badge/all_contributors-1-21bb42.svg" />
+<img alt="All Contributors: 1 👪" src="https://img.shields.io/badge/all_contributors-1_👪-21bb42.svg" />
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 	</a>
@@ -24,6 +24,7 @@
 	</a>
 	<img alt="Style: Prettier" src="https://img.shields.io/badge/style-prettier-21bb42.svg" />
 	<img alt="TypeScript: Strict" src="https://img.shields.io/badge/typescript-strict-21bb42.svg" />
+	<img alt="npm package version" src="https://img.shields.io/npm/v/ts-function-inliner?color=21bb42" />
 </p>
 
 ## Explanation
@@ -73,7 +74,7 @@ However, you can use this in other pipelines.
 
 Specify it as a custom transformer with [gulp-typescript](https://github.com/ivogabe/gulp-typescript):
 
-```js
+```ts
 import gulp from "gulp";
 import ts from "gulp-typescript";
 import { transformerProgram } from "ts-function-inliner";

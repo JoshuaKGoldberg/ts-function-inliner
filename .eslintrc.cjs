@@ -10,7 +10,7 @@ module.exports = {
 		"plugin:n/recommended",
 		"plugin:perfectionist/recommended-natural",
 		"plugin:regexp/recommended",
-		"prettier",
+		"plugin:vitest/recommended",
 	],
 	overrides: [
 		{
@@ -41,6 +41,21 @@ module.exports = {
 				"jsdoc/require-param": "off",
 				"jsdoc/require-property": "off",
 				"jsdoc/require-returns": "off",
+			},
+		},
+		{
+			files: "**/*.md/*.ts",
+			rules: {
+				"n/no-missing-import": [
+					"error",
+					{ allowModules: ["gulp", "gulp-typescript", "ts-function-inliner"] },
+				],
+				"n/no-unpublished-import": [
+					"error",
+					{
+						allowModules: ["gulp", "gulp-typescript"],
+					},
+				],
 			},
 		},
 		{
@@ -82,7 +97,6 @@ module.exports = {
 				"@typescript-eslint/no-unsafe-call": "off",
 			},
 		},
-
 		{
 			extends: ["plugin:yml/standard", "plugin:yml/prettier"],
 			files: ["**/*.{yml,yaml}"],
@@ -110,7 +124,6 @@ module.exports = {
 	plugins: [
 		"@typescript-eslint",
 		"deprecation",
-		"import",
 		"jsdoc",
 		"no-only-tests",
 		"perfectionist",
@@ -120,24 +133,16 @@ module.exports = {
 	reportUnusedDisableDirectives: true,
 	root: true,
 	rules: {
-		// These rules need to be configured for this repo and we like them on.
-		"n/no-unpublished-import": [
-			"error",
-			{
-				allowModules: ["gulp", "gulp-typescript"],
-			},
-		],
-
 		// These off/less-strict-by-default rules work well for this repo and we like them on.
 		"@typescript-eslint/no-unused-vars": ["error", { caughtErrors: "all" }],
-		"import/extensions": ["error", "ignorePackages"],
 		"no-only-tests/no-only-tests": "error",
 
 		// These on-by-default rules don't work well for this repo and we like them off.
-		"n/no-missing-import": "off",
 		"no-case-declarations": "off",
 		"no-constant-condition": "off",
 		"no-inner-declarations": "off",
+		"no-mixed-spaces-and-tabs": "off",
+		"vitest/expect-expect": "off",
 
 		// Stylistic concerns that don't interfere with Prettier
 		"@typescript-eslint/padding-line-between-statements": [

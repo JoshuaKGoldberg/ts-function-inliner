@@ -2,9 +2,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/prepare
-      - run: yarn test
+      - run: pnpm run test --coverage
+      - name: Codecov
+        uses: codecov/codecov-action@v3
+
 name: Test
 
 on:
