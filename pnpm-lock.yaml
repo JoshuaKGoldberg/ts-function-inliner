@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@prettier/sync':
-    specifier: ^0.4.0
-    version: 0.4.0(prettier@3.0.3)
+    specifier: ^0.5.0
+    version: 0.5.0(prettier@3.0.3)
   '@release-it/conventional-changelog':
     specifier: ^8.0.0
     version: 8.0.1(release-it@16.2.1)
@@ -1294,8 +1294,8 @@ packages:
       config-chain: 1.1.13
     dev: true
 
-  /@prettier/sync@0.4.0(prettier@3.0.3):
-    resolution: {integrity: sha512-URw/K8LZ7QuatxunhxLaSj1OAvZRzwYVt0FEv/YbdjIxfFw8/q3tgngb26ZXapv97dGXt5T5V2f5g6XTglvaLw==}
+  /@prettier/sync@0.5.0(prettier@3.0.3):
+    resolution: {integrity: sha512-1a6veNypZYkSbU33anha4Pdna9Jz3HXUc0aru7sgN7HuyJHPIVNdCTfjhm1S+mG9yXmWuAO+a6I+Cznp9Ogt3A==}
     peerDependencies:
       prettier: '*'
     dependencies:
