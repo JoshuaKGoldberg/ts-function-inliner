@@ -6,7 +6,9 @@ export const isFunctionWithBody = (
 	node: ts.Node,
 ): node is FunctionLikeWithBody => {
 	return (
-		(ts.isFunctionDeclaration(node) || ts.isFunctionExpression(node)) &&
+		(ts.isFunctionDeclaration(node) ||
+			ts.isFunctionExpression(node) ||
+			ts.isMethodDeclaration(node)) &&
 		!!node.body
 	);
 };

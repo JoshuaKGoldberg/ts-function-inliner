@@ -58,6 +58,15 @@ function expectResultToBe(actual: string, expected: string) {
 	);
 }
 
+function expectResultToEndWith(actual: string, expected: string) {
+	const normalized = normalizeFile(actual);
+
+	expect(normalized.indexOf(expected)).toBeCloseTo(
+		normalized.length - expected.length,
+		-1,
+	);
+}
+
 describe("transformerProgram", () => {
 	describe("function contents", () => {
 		test("BinaryExpression", () => {
@@ -65,7 +74,7 @@ describe("transformerProgram", () => {
 				function addToStringLength(base: string) {
 					return base.length + 3;
 				}
-				
+
 				addToStringLength("abc");
 			`);
 
@@ -75,7 +84,7 @@ describe("transformerProgram", () => {
 					function addToStringLength(base) {
 						return base.length + 3;
 					}
-					
+
 					"abc".length + 3;
 				`,
 			);
@@ -86,7 +95,7 @@ describe("transformerProgram", () => {
 				function incrementCount(count: number) {
 					return count++;
 				}
-				
+
 				const value = 123;
 				incrementCount(value);
 			`);
@@ -97,7 +106,7 @@ describe("transformerProgram", () => {
 					function incrementCount(count) {
 						return count++;
 					}
-					
+
 					const value = 123;
 					value++;
 				`,
@@ -109,7 +118,7 @@ describe("transformerProgram", () => {
 				function isNotEmpty(text: string) {
 					return !!text.length;
 				}
-				
+
 				isNotEmpty("Boo! 👻");
 			`);
 
@@ -119,14 +128,14 @@ describe("transformerProgram", () => {
 					function isNotEmpty(text) {
 						return !!text.length;
 					}
-					
+
 					!!"Boo! 👻".length;
 				`,
 			);
 		});
 	});
 
-	test("function kind", () => {
+	describe("function kinds", () => {
 		test("FunctionExpression in object property", () => {
 			const result = getResult(`
 				const Utils = {
@@ -134,40 +143,29 @@ describe("transformerProgram", () => {
 						return !!text.length;
 					}
 				}
-				
+
 				Utils.isNotEmpty("Boo! 👻");
 			`);
 
-			expectResultToBe(
-				result,
-				`
-					const Utils = {
-						isNotEmpty: function (text) {
-							return !!text.length;
-						}
-					}
-					
-					!!"Boo! 👻".length;
-				`,
-			);
+			expectResultToEndWith(result, `!!"Boo! 👻".length;`);
 		});
 
 		test("FunctionExpression in variable", () => {
 			const result = getResult(`
-				const isNotEmpty = function (text: string) {
+				const isTextNotEmpty = function (text: string) {
 					return !!text.length;
-				}
-				
-				isNotEmpty("Boo! 👻");
+				};
+
+				isTextNotEmpty("Boo! 👻");
 			`);
 
 			expectResultToBe(
 				result,
 				`
-					const isNotEmpty = function (text) {
+					const isTextNotEmpty = function (text) {
 						return !!text.length;
-					}
-					
+					};
+
 					!!"Boo! 👻".length;
 				`,
 			);
@@ -194,6 +192,184 @@ describe("transformerProgram", () => {
 					undefined !== undefined;
 				`,
 			);
+		});
+	});
+
+	describe("size thresholds", () => {
+		describe("FunctionExpressions: inline", () => {
+			test("longer name than body", () => {
+				const result = getResult(`
+					const Utils = {
+						longerName: function longerName(a: number) {
+							return a + 1.2;
+						},
+					};
+
+					Utils.longerName(3);
+				`);
+
+				expectResultToEndWith(result, "3 + 1.2");
+			});
+
+			test("shorter name than body", () => {
+				const result = getResult(`
+					const Utils = {
+						shorterName: function shorterName(a: number) {
+							return a + 1.000000000000000002;
+						},
+					};
+
+					Utils.shorterName(3);
+				`);
+
+				expectResultToEndWith(result, "Utils.shorterName(3);");
+			});
+		});
+
+		describe("FunctionExpressions: method", () => {
+			test("longer name than body", () => {
+				const result = getResult(`
+					const Utils = {
+						longerName(a: number) {
+							return a + 1.2;
+						};
+						}
+
+					Utils.longerName(3);
+				`);
+
+				expectResultToEndWith(result, `3 + 1.2;`);
+			});
+
+			test("shorter name than body", () => {
+				const result = getResult(`
+					const Utils = {
+						shortName(a: number) {
+							return a + 1.000000000000000002;
+						}
+					};
+
+					Utils.shortName(3);
+				`);
+
+				expectResultToEndWith(result, `Utils.shortName(3);`);
+			});
+		});
+
+		describe("FunctionExpressions: property", () => {
+			test("longer name than body", () => {
+				const result = getResult(`
+					const Utils = {
+						longerName: function (a: number) {
+							return a + 1.2;
+						}
+					};
+
+					Utils.longerName(3);
+				`);
+
+				expectResultToEndWith(result, `3 + 1.2;`);
+			});
+
+			test("shorter name than body", () => {
+				const result = getResult(`
+					const Utils = {
+						shortName: function(a: number) {
+							return a + 1.000000000000000002;
+						}
+					};
+
+					Utils.shortName(3);
+				`);
+
+				expectResultToEndWith(result, `Utils.shortName(3);`);
+			});
+		});
+
+		describe("property FunctionDeclarations", () => {
+			test("longer name than body", () => {
+				const result = getResult(`
+					function longerName(a: number) {
+						return a + 1.2;
+					}
+
+					const Utils = { longerName: longerName };
+
+					Utils.longerName(3);
+				`);
+
+				expectResultToEndWith(result, `3 + 1.2;`);
+			});
+
+			test("shorter name than body", () => {
+				const result = getResult(`
+					function shorterName(a: number) {
+						return a + 1.000000000000000002;
+					}
+
+					const Utils = { shorterName: shorterName };
+
+					Utils.shorterName(3);
+				`);
+
+				expectResultToEndWith(result, `Utils.shorterName(3);`);
+			});
+		});
+
+		describe("shorthand property FunctionDeclarations", () => {
+			test("longer name than body", () => {
+				const result = getResult(`
+					function longerName(a: number) {
+						return a + 1.2;
+					}
+	
+					const Utils = { longerName };
+
+					Utils.longerName(3);
+				`);
+
+				expectResultToEndWith(result, `3 + 1.2;`);
+			});
+
+			test("shorter name than body", () => {
+				const result = getResult(`
+					function shorterName(a: number) {
+						return a + 1.000000000000000002;
+					}
+	
+					const Utils = { shorterName };
+	
+					Utils.shorterName(3);
+				`);
+
+				expectResultToEndWith(result, `Utils.shorterName(3);`);
+			});
+		});
+
+		describe("standalone FunctionDeclarations", () => {
+			test("longer name than body", () => {
+				const result = getResult(`
+					function longerName(a: number) {
+						return a + 1.2;
+					}
+
+					longerName(3);
+				`);
+
+				expectResultToEndWith(result, `3 + 1.2;`);
+			});
+
+			test("shorter name than body", () => {
+				const result = getResult(`
+					function shorterName(a: number) {
+						return a + 1.000000000000000002;
+					}
+
+					shorterName(3);
+				`);
+
+				expectResultToEndWith(result, `shorterName(3);`);
+			});
 		});
 	});
 });
