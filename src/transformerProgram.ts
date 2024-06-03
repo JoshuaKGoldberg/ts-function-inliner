@@ -2,9 +2,9 @@ import { CachedFactory } from "cached-factory";
 import ts from "typescript";
 
 import { getFunctionDeclarationFromCall } from "./getFunctionDeclarationFromCall.js";
+import { getFunctionStatements } from "./getFunctionStatements.js";
 import { transformToInline } from "./transformToInline.js";
 import { FunctionLikeWithBody } from "./types.js";
-import { getFunctionStatements } from "./getFunctionStatements.js";
 
 export const transformerProgram = (program: ts.Program) => {
 	const transformerFactory: ts.TransformerFactory<ts.SourceFile> = (
