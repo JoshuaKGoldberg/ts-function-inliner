@@ -136,6 +136,28 @@ describe("transformerProgram", () => {
 	});
 
 	describe("function kinds", () => {
+		test("ArrowFunction with concise body", () => {
+			const result = getResult(`
+				const isNotEmpty = (text: string) => !!text.length;
+
+				isNotEmpty("Boo! 👻");
+			`);
+
+			expectResultToEndWith(result, `!!"Boo! 👻".length;`);
+		});
+
+		test("ArrowFunction with full body", () => {
+			const result = getResult(`
+				const isNotEmpty = (text: string) => {
+					return !!text.length;
+				};
+
+				isNotEmpty("Boo! 👻");
+			`);
+
+			expectResultToEndWith(result, `!!"Boo! 👻".length;`);
+		});
+
 		test("FunctionExpression in object property", () => {
 			const result = getResult(`
 				const Utils = {
@@ -196,6 +218,28 @@ describe("transformerProgram", () => {
 	});
 
 	describe("size thresholds", () => {
+		describe("ArrowFunction variable", () => {
+			test("longer name than body", () => {
+				const result = getResult(`
+					const longerName = (a: number) => a + 1.2;
+
+					longerName(3);
+				`);
+
+				expectResultToEndWith(result, "3 + 1.2");
+			});
+
+			test("shorter name than body", () => {
+				const result = getResult(`
+					const shorterName = (a: number) => a + 1.000000000000000002;
+
+					shorterName(3);
+				`);
+
+				expectResultToEndWith(result, "shorterName(3);");
+			});
+		});
+
 		describe("FunctionExpressions: inline", () => {
 			test("longer name than body", () => {
 				const result = getResult(`

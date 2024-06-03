@@ -2,8 +2,9 @@ import { CachedFactory } from "cached-factory";
 import ts from "typescript";
 
 import { getFunctionDeclarationFromCall } from "./getFunctionDeclarationFromCall.js";
+import { getFunctionStatements } from "./getFunctionStatements.js";
 import { transformToInline } from "./transformToInline.js";
-import { SmallFunctionLikeWithBody } from "./types.js";
+import { FunctionLikeWithBody } from "./types.js";
 
 export const transformerProgram = (program: ts.Program) => {
 	const transformerFactory: ts.TransformerFactory<ts.SourceFile> = (
@@ -13,8 +14,10 @@ export const transformerProgram = (program: ts.Program) => {
 			const typeChecker = program.getTypeChecker();
 
 			const functionDeclarationLengths = new CachedFactory(
-				(node: SmallFunctionLikeWithBody) =>
-					node.body.statements[0].getText(sourceFile).length - "return".length,
+				(node: FunctionLikeWithBody) => {
+					const statements = getFunctionStatements(node);
+					return statements[0].getText(sourceFile).length - "return".length;
+				},
 			);
 
 			const getFunctionDeclarationForReplacement = (
@@ -39,7 +42,15 @@ export const transformerProgram = (program: ts.Program) => {
 					getFunctionDeclarationForReplacement(node);
 
 				if (functionDeclaration) {
-					return transformToInline(node, functionDeclaration, context);
+					const transformed = transformToInline(
+						node,
+						functionDeclaration,
+						context,
+					);
+
+					if (transformed) {
+						return transformed;
+					}
 				}
 
 				return ts.visitEachChild(node, visitor, context);

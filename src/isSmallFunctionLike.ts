@@ -1,17 +1,27 @@
 import ts from "typescript";
 
 import { CollectedValue, collectValue } from "./collectValue.js";
+import { getFunctionStatements } from "./getFunctionStatements.js";
 import { isFunctionWithBody } from "./isFunctionDeclarationWithBody.js";
-import { SmallFunctionLikeWithBody } from "./types.js";
+import { FunctionLikeWithBody } from "./types.js";
 
 export const isSmallFunctionLike = (
 	node: ts.Node,
-): node is SmallFunctionLikeWithBody => {
-	if (!isFunctionWithBody(node) || node.body.statements.length !== 1) {
+): node is FunctionLikeWithBody => {
+	if (!isFunctionWithBody(node)) {
 		return false;
 	}
 
-	const [statement] = node.body.statements;
+	if (ts.isArrowFunction(node) && ts.isExpression(node.body)) {
+		return true;
+	}
+
+	const statements = getFunctionStatements(node);
+	if (statements.length !== 1) {
+		return false;
+	}
+
+	const [statement] = statements;
 	if (!ts.isReturnStatement(statement)) {
 		return false;
 	}

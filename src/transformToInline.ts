@@ -1,6 +1,7 @@
 import ts from "typescript";
 
-import { SmallFunctionLikeWithBody } from "./types.js";
+import { getFunctionStatements } from "./getFunctionStatements.js";
+import { FunctionLikeWithBody } from "./types.js";
 
 /**
  * Inlines a small function declaration into a call to that function,
@@ -8,7 +9,7 @@ import { SmallFunctionLikeWithBody } from "./types.js";
  */
 export const transformToInline = (
 	callExpression: ts.CallExpression,
-	declaration: SmallFunctionLikeWithBody,
+	declaration: FunctionLikeWithBody,
 	context: ts.TransformationContext,
 ) => {
 	const parameters = new Map(
@@ -29,5 +30,10 @@ export const transformToInline = (
 		return ts.visitEachChild(node, visitor, context);
 	};
 
-	return ts.visitNode(declaration.body.statements[0].expression, visitor);
+	const [statement] = getFunctionStatements(declaration);
+
+	return ts.visitNode(
+		ts.isReturnStatement(statement) ? statement.expression : statement,
+		visitor,
+	);
 };
