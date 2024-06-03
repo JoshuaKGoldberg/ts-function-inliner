@@ -1,16 +1,13 @@
 import ts from "typescript";
 
 import { CollectedValue, collectValue } from "./collectValue.js";
-import { isFunctionDeclarationWithBody } from "./isFunctionDeclarationWithBody.js";
-import { SmallFunctionLikeDeclaration } from "./types.js";
+import { isFunctionWithBody } from "./isFunctionDeclarationWithBody.js";
+import { SmallFunctionLikeWithBody } from "./types.js";
 
-export const isSmallFunctionLikeDeclaration = (
+export const isSmallFunctionLike = (
 	node: ts.Node,
-): node is SmallFunctionLikeDeclaration => {
-	if (
-		!isFunctionDeclarationWithBody(node) ||
-		node.body.statements.length !== 1
-	) {
+): node is SmallFunctionLikeWithBody => {
+	if (!isFunctionWithBody(node) || node.body.statements.length !== 1) {
 		return false;
 	}
 

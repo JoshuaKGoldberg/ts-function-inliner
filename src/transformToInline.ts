@@ -1,6 +1,6 @@
 import ts from "typescript";
 
-import { SmallFunctionLikeDeclaration } from "./types.js";
+import { SmallFunctionLikeWithBody } from "./types.js";
 
 /**
  * Inlines a small function declaration into a call to that function,
@@ -8,7 +8,7 @@ import { SmallFunctionLikeDeclaration } from "./types.js";
  */
 export const transformToInline = (
 	callExpression: ts.CallExpression,
-	declaration: SmallFunctionLikeDeclaration,
+	declaration: SmallFunctionLikeWithBody,
 	context: ts.TransformationContext,
 ) => {
 	const parameters = new Map(
