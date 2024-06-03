@@ -61,89 +61,89 @@ function expectResultToBe(actual: string, expected: string) {
 describe("transformerProgram", () => {
 	test("BinaryExpression", () => {
 		const result = getResult(`
-            function addToLength(base: string) {
-                return base.length + 3;
-            }
-            
-            addToLength("abc");
-        `);
+			function addToLength(base: string) {
+				return base.length + 3;
+			}
+			
+			addToLength("abc");
+		`);
 
 		expectResultToBe(
 			result,
 			`
-            function addToLength(base) {
-                return base.length + 3;
-            }
-            
-            "abc".length + 3;
-        `,
+				function addToLength(base) {
+					return base.length + 3;
+				}
+				
+				"abc".length + 3;
+			`,
 		);
 	});
 
 	test("PostfixUnaryExpression", () => {
 		const result = getResult(`
-            function incrementCount(count: number) {
-                return count++;
-            }
-            
-            const value = 123;
-            incrementCount(value);
-        `);
+			function incrementCount(count: number) {
+				return count++;
+			}
+			
+			const value = 123;
+			incrementCount(value);
+		`);
 
 		expectResultToBe(
 			result,
 			`
-            function incrementCount(count) {
-                return count++;
-            }
-            
-            const value = 123;
-            value++;
-        `,
+				function incrementCount(count) {
+					return count++;
+				}
+				
+				const value = 123;
+				value++;
+			`,
 		);
 	});
 
 	test("PrefixUnaryExpression", () => {
 		const result = getResult(`
-            function isNotEmpty(text: string) {
-                return !!text.length;
-            }
-            
-            isNotEmpty("Boo! 👻");
-        `);
+			function isNotEmpty(text: string) {
+				return !!text.length;
+			}
+			
+			isNotEmpty("Boo! 👻");
+		`);
 
 		expectResultToBe(
 			result,
 			`
-            function isNotEmpty(text) {
-                return !!text.length;
-            }
-            
-            !!"Boo! 👻".length;
-        `,
+				function isNotEmpty(text) {
+					return !!text.length;
+				}
+				
+				!!"Boo! 👻".length;
+			`,
 		);
 	});
 
 	test("User-defined type guard", () => {
 		const result = getResult(`
-            function isDefined<T extends string>(input: T | undefined): input is T {
-                return input !== undefined;
-            }
+			function isDefined<T extends string>(input: T | undefined): input is T {
+				return input !== undefined;
+			}
 
-            isDefined("");
-            isDefined(undefined);
-        `);
+			isDefined("");
+			isDefined(undefined);
+		`);
 
 		expectResultToBe(
 			result,
 			`
-            function isDefined(input) {
-                return input !== undefined;
-            }
+				function isDefined(input) {
+					return input !== undefined;
+				}
 
-            "" !== undefined;
-            undefined !== undefined;
-        `,
+				"" !== undefined;
+				undefined !== undefined;
+			`,
 		);
 	});
 });
