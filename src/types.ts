@@ -3,12 +3,12 @@ import ts from "typescript";
 export type MakeRequired<T, K extends keyof T> = Omit<T, K> &
 	Required<Pick<T, K>>;
 
-export type FunctionDeclarationWithBody = MakeRequired<
-	ts.FunctionDeclaration,
+export type FunctionLikeWithBody = MakeRequired<
+	ts.FunctionDeclaration | ts.FunctionExpression,
 	"body"
 >;
 
-export type SmallFunctionLikeDeclaration = ts.FunctionDeclaration & {
+export type SmallFunctionLikeWithBody = FunctionLikeWithBody & {
 	body: {
 		statements: [MakeRequired<ts.ReturnStatement, "expression">];
 	};

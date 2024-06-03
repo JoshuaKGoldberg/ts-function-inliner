@@ -1,9 +1,12 @@
 import ts from "typescript";
 
-import { FunctionDeclarationWithBody } from "./types.js";
+import { FunctionLikeWithBody } from "./types.js";
 
-export const isFunctionDeclarationWithBody = (
+export const isFunctionWithBody = (
 	node: ts.Node,
-): node is FunctionDeclarationWithBody => {
-	return ts.isFunctionDeclaration(node) && !!node.body;
+): node is FunctionLikeWithBody => {
+	return (
+		(ts.isFunctionDeclaration(node) || ts.isFunctionExpression(node)) &&
+		!!node.body
+	);
 };
