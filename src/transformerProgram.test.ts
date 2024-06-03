@@ -127,7 +127,32 @@ describe("transformerProgram", () => {
 	});
 
 	test("function kind", () => {
-		test("FunctionExpression", () => {
+		test("FunctionExpression in object property", () => {
+			const result = getResult(`
+				const Utils = {
+					isNotEmpty: function (text: string) {
+						return !!text.length;
+					}
+				}
+				
+				Utils.isNotEmpty("Boo! 👻");
+			`);
+
+			expectResultToBe(
+				result,
+				`
+					const Utils = {
+						isNotEmpty: function (text) {
+							return !!text.length;
+						}
+					}
+					
+					!!"Boo! 👻".length;
+				`,
+			);
+		});
+
+		test("FunctionExpression in variable", () => {
 			const result = getResult(`
 				const isNotEmpty = function (text: string) {
 					return !!text.length;
