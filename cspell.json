@@ -10,21 +10,11 @@
 	],
 	"words": [
 		"automerge",
-		"Codecov",
-		"codespace",
-		"commitlint",
-		"contributorsrc",
-		"conventionalcommits",
 		"gulpfile",
 		"inlines",
 		"knip",
-		"lcov",
-		"markdownlintignore",
-		"npmpackagejsonlintrc",
-		"outro",
 		"packagejson",
-		"quickstart",
-		"tsup",
-		"wontfix"
+		"tseslint",
+		"tsup"
 	]
 }

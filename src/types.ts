@@ -8,8 +8,8 @@ export type FunctionLikeWithBody = MakeRequired<
 	"body"
 >;
 
-export type SmallFunctionLikeWithBody = FunctionLikeWithBody & {
+export type SmallFunctionLikeWithBody = {
 	body: {
 		statements: [MakeRequired<ts.ReturnStatement, "expression">];
 	};
-};
+} & FunctionLikeWithBody;

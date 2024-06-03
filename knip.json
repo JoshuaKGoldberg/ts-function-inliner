@@ -1,6 +1,7 @@
 {
 	"$schema": "https://unpkg.com/knip@latest/schema.json",
-	"entry": ["src/index.ts!", "example/gulpfile.js!"],
+	"entry": ["src/index.ts!"],
+	"ignoreDependencies": ["gulp", "gulp-typescript"],
 	"ignoreExportsUsedInFile": { "interface": true, "type": true },
 	"project": ["src/**/*.ts!"]
 }
