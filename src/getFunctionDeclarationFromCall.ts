@@ -6,8 +6,17 @@ export function getFunctionDeclarationFromCall(
 	node: ts.CallExpression,
 	typeChecker: ts.TypeChecker,
 ) {
-	let declaration = typeChecker.getSymbolAtLocation(node.expression)
-		?.valueDeclaration;
+	let declaration: ts.Node | undefined = typeChecker.getSymbolAtLocation(
+		node.expression,
+	)?.valueDeclaration;
+
+	if (!declaration) {
+		return undefined;
+	}
+
+	if (ts.isVariableDeclaration(declaration)) {
+		declaration = declaration.initializer;
+	}
 
 	if (!declaration) {
 		return undefined;
