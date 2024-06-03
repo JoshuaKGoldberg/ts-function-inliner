@@ -14,7 +14,7 @@ importers:
     devDependencies:
       '@prettier/sync':
         specifier: ^0.5.0
-        version: 0.5.0(prettier@3.0.3)
+        version: 0.5.2(prettier@3.0.3)
       '@release-it/conventional-changelog':
         specifier: ^8.0.0
         version: 8.0.1(release-it@16.2.1(typescript@5.2.2))
@@ -814,8 +814,8 @@ packages:
     resolution: {integrity: sha512-UA91GwWPhFExt3IizW6bOeY/pQ0BkuNwKjk9iQW9KqxluGCrg4VenZ0/L+2Y0+ZOtme72EVvg6v0zo3AMQRCeA==}
     engines: {node: '>=12'}
 
-  '@prettier/sync@0.5.0':
-    resolution: {integrity: sha512-1a6veNypZYkSbU33anha4Pdna9Jz3HXUc0aru7sgN7HuyJHPIVNdCTfjhm1S+mG9yXmWuAO+a6I+Cznp9Ogt3A==}
+  '@prettier/sync@0.5.2':
+    resolution: {integrity: sha512-Yb569su456XNx5BsH/Vyem7xD6g/y9iLmLUzRKM1a/dhU/D7HqqvkAG72znulXlMXztbV0iiu9O5AL8K98TzZQ==}
     peerDependencies:
       prettier: '*'
 
@@ -3230,8 +3230,8 @@ packages:
     resolution: {integrity: sha512-pxiuXh0iVEq7VM7KMIhs5gxsfxCux2URptUQaXo4iZZJxBAzTPOLE2BumO5dbfVYq/hBJFBR/a1mFDmOx5AGmw==}
     engines: {node: '>=0.10.0'}
 
-  make-synchronized@0.2.7:
-    resolution: {integrity: sha512-tbTJaNgmKV3E6yYxEN5djObcMt0j1WB2ltn8JteZYczrdFkGMor3KAraPGUf4NJsf5u+FvJbgbGGL35N3J6VVw==}
+  make-synchronized@0.2.9:
+    resolution: {integrity: sha512-4wczOs8SLuEdpEvp3vGo83wh8rjJ78UsIk7DIX5fxdfmfMJGog4bQzxfvOwq7Q3yCHLC4jp1urPHIxRS/A93gA==}
 
   map-cache@0.2.2:
     resolution: {integrity: sha512-8y/eV9QQZCiyn1SprXSrCmqJN0yNRATe+PO8ztwqrvrbdRLA3eYJF0yaR0YayLWkMbsQSKWS9N2gPcGEc4UsZg==}
@@ -5572,9 +5572,9 @@ snapshots:
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
 
-  '@prettier/sync@0.5.0(prettier@3.0.3)':
+  '@prettier/sync@0.5.2(prettier@3.0.3)':
     dependencies:
-      make-synchronized: 0.2.7
+      make-synchronized: 0.2.9
       prettier: 3.0.3
 
   '@release-it/conventional-changelog@8.0.1(release-it@16.2.1(typescript@5.2.2))':
@@ -8322,7 +8322,7 @@ snapshots:
     dependencies:
       kind-of: 6.0.3
 
-  make-synchronized@0.2.7: {}
+  make-synchronized@0.2.9: {}
 
   map-cache@0.2.2: {}
 
