@@ -1,6 +1,9 @@
 <h1 align="center">TypeScript Function Inliner</h1>
 
-<p align="center">TypeScript transformation that inlines calls to small functions. ⚡️</p>
+<p align="center">
+	TypeScript transformation that inlines calls to small functions.
+	⚡️
+</p>
 
 <p align="center">
 	<!-- prettier-ignore-start -->
@@ -10,8 +13,8 @@
 	<!-- prettier-ignore-end -->
 	<a href="https://github.com/JoshuaKGoldberg/ts-function-inliner/blob/main/.github/CODE_OF_CONDUCT.md" target="_blank"><img alt="🤝 Code of Conduct: Kept" src="https://img.shields.io/badge/%F0%9F%A4%9D_code_of_conduct-kept-21bb42" /></a>
 	<a href="https://codecov.io/gh/JoshuaKGoldberg/ts-function-inliner" target="_blank"><img alt="🧪 Coverage" src="https://img.shields.io/codecov/c/github/JoshuaKGoldberg/ts-function-inliner?label=%F0%9F%A7%AA%20coverage" /></a>
-	<a href="https://github.com/JoshuaKGoldberg/ts-function-inliner/blob/main/LICENSE.md" target="_blank"><img alt="📝 License: MIT" src="https://img.shields.io/badge/%F0%9F%93%9D_license-MIT-21bb42.svg"></a>
-	<a href="http://npmjs.com/package/ts-function-inliner"><img alt="📦 npm version" src="https://img.shields.io/npm/v/ts-function-inliner?color=21bb42&label=%F0%9F%93%A6%20npm" /></a>
+	<a href="https://github.com/JoshuaKGoldberg/ts-function-inliner/blob/main/LICENSE.md" target="_blank"><img alt="📝 License: MIT" src="https://img.shields.io/badge/%F0%9F%93%9D_license-MIT-21bb42.svg" /></a>
+	<a href="http://npmjs.com/package/ts-function-inliner" target="_blank"><img alt="📦 npm version" src="https://img.shields.io/npm/v/ts-function-inliner?color=21bb42&label=%F0%9F%93%A6%20npm" /></a>
 	<img alt="💪 TypeScript: Strict" src="https://img.shields.io/badge/%F0%9F%92%AA_typescript-strict-21bb42.svg" />
 </p>
 
@@ -37,13 +40,13 @@ export function isNotFalsy(value: unknown) {
 Before:
 
 ```ts
-isNotFalsy("Hello!");
+export const value = isNotFalsy("Hello!");
 ```
 
 After:
 
 ```ts
-!!"Hello!";
+export const value = !!"Hello!";
 ```
 
 > Note: this transformer does not remove the original function declarations.
@@ -83,18 +86,19 @@ gulp.task("typescript", function () {
 
 ## Development
 
-See [`.github/CONTRIBUTING.md`](./.github/CONTRIBUTING.md).
-Thanks! 💖
+See [`.github/CONTRIBUTING.md`](./.github/CONTRIBUTING.md), then [`.github/DEVELOPMENT.md`](./.github/DEVELOPMENT.md).
+Thanks! ⚡
 
 ## Contributors
 
+<!-- spellchecker: disable -->
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="http://www.joshuakgoldberg.com"><img src="https://avatars.githubusercontent.com/u/3335181?v=4?s=100" width="100px;" alt="Josh Goldberg"/><br /><sub><b>Josh Goldberg</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/ts-function-inliner/commits?author=JoshuaKGoldberg" title="Code">💻</a> <a href="#ideas-JoshuaKGoldberg" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-JoshuaKGoldberg" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-JoshuaKGoldberg" title="Maintenance">🚧</a> <a href="#tool-JoshuaKGoldberg" title="Tools">🔧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.joshuakgoldberg.com"><img src="https://avatars.githubusercontent.com/u/3335181?v=4?s=100" width="100px;" alt="Josh Goldberg"/><br /><sub><b>Josh Goldberg</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/ts-function-inliner/commits?author=JoshuaKGoldberg" title="Code">💻</a> <a href="#ideas-JoshuaKGoldberg" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-JoshuaKGoldberg" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-JoshuaKGoldberg" title="Maintenance">🚧</a> <a href="#tool-JoshuaKGoldberg" title="Tools">🔧</a> <a href="#content-JoshuaKGoldberg" title="Content">🖋</a> <a href="https://github.com/JoshuaKGoldberg/ts-function-inliner/commits?author=JoshuaKGoldberg" title="Documentation">📖</a> <a href="#projectManagement-JoshuaKGoldberg" title="Project Management">📆</a></td>
     </tr>
   </tbody>
 </table>
@@ -103,9 +107,10 @@ Thanks! 💖
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+<!-- spellchecker: enable -->
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
-[^1]: See [Microsoft/TypeScript: Added some Type type predicates internally #50010](https://github.com/microsoft/TypeScript/pull/50010), which caused a 1-2% performance hit in TypeScript.
+> 💝 This package was templated with [`create-typescript-app`](https://github.com/JoshuaKGoldberg/create-typescript-app) using the [Bingo engine](https://create.bingo).
 
-> 💙 This package was templated with [create-typescript-app](https://github.com/JoshuaKGoldberg/create-typescript-app).
+[^1]: See [Microsoft/TypeScript: Added some Type type predicates internally #50010](https://github.com/microsoft/TypeScript/pull/50010), which caused a 1-2% performance hit in TypeScript.
