@@ -1,3 +1,11 @@
+# Changelog
+
+## [0.2.1](https://github.com/JoshuaKGoldberg/ts-function-inliner/compare/v0.2.0...v0.2.1) (2025-04-03)
+
+### Bug Fixes
+
+- bump to create-typescript-app@2 with transitions action ([#206](https://github.com/JoshuaKGoldberg/ts-function-inliner/issues/206)) ([53c82b8](https://github.com/JoshuaKGoldberg/ts-function-inliner/commit/53c82b8fa9b3f0317f0963c789977a8085c46ff7)), closes [#205](https://github.com/JoshuaKGoldberg/ts-function-inliner/issues/205)
+
 # [0.2.0](https://github.com/JoshuaKGoldberg/ts-function-inliner/compare/v0.1.0...v0.2.0) (2024-06-03)
 
 ### Features
