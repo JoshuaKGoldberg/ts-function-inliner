@@ -35,7 +35,7 @@
 		"*": "prettier --ignore-unknown --write"
 	},
 	"dependencies": {
-		"cached-factory": "^0.0.2"
+		"cached-factory": "^0.1.0"
 	},
 	"devDependencies": {
 		"@eslint-community/eslint-plugin-eslint-comments": "4.4.1",
