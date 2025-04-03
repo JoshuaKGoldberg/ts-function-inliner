@@ -112,5 +112,3 @@ Thanks! ⚡
 <!-- prettier-ignore-end -->
 
 > 💝 This package was templated with [`create-typescript-app`](https://github.com/JoshuaKGoldberg/create-typescript-app) using the [Bingo engine](https://create.bingo).
-
-[^1]: See [Microsoft/TypeScript: Added some Type type predicates internally #50010](https://github.com/microsoft/TypeScript/pull/50010), which caused a 1-2% performance hit in TypeScript.
