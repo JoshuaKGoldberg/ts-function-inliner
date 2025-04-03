@@ -1,10 +1,14 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"automerge": true,
-	"extends": ["config:best-practices", "replacements:all"],
+	"extends": [
+		":preserveSemverRanges",
+		"config:best-practices",
+		"replacements:all"
+	],
 	"ignoreDeps": ["codecov/codecov-action"],
-	"internalChecksFilter": "strict",
 	"labels": ["dependencies"],
-	"minimumReleaseAge": "3 days",
+	"minimumReleaseAge": "7 days",
+	"patch": { "enabled": false },
 	"postUpdateOptions": ["pnpmDedupe"]
 }

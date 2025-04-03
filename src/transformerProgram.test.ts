@@ -1,3 +1,4 @@
+/* eslint vitest/expect-expect: ["error", { "assertFunctionNames": ["expectResultTo*"] }] */
 import { format } from "@prettier/sync";
 import ts from "typescript";
 import { describe, expect, test } from "vitest";
