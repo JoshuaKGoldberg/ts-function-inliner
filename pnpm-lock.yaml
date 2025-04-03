@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       cached-factory:
-        specifier: ^0.0.2
-        version: 0.0.2
+        specifier: ^0.1.0
+        version: 0.1.0
     devDependencies:
       '@eslint-community/eslint-plugin-eslint-comments':
         specifier: 4.4.1
@@ -1659,10 +1659,6 @@ packages:
   cac@6.7.14:
     resolution: {integrity: sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==}
     engines: {node: '>=8'}
-
-  cached-factory@0.0.2:
-    resolution: {integrity: sha512-4mhebGQ8YyvlDAX+zOHso5MezPi2pP11ZFE7vYhDIOJifsxEi7R5geB/nrLBYzQH5nwZ9kNsLAjM+WBj6osLDg==}
-    engines: {node: '>=18'}
 
   cached-factory@0.1.0:
     resolution: {integrity: sha512-IGOSWu+NuED5UzCRmBeqQPZ8z7SkgrD/nN67W2iY1Qv83CVhevyMexkGclJ86saXisIqxoOnbeiTWvsCHRqJBw==}
@@ -6228,8 +6224,6 @@ snapshots:
       load-tsconfig: 0.2.5
 
   cac@6.7.14: {}
-
-  cached-factory@0.0.2: {}
 
   cached-factory@0.1.0: {}
 
