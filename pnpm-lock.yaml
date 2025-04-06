@@ -97,8 +97,8 @@ importers:
         specifier: 3.5.3
         version: 3.5.3
       prettier-plugin-curly:
-        specifier: 0.3.1
-        version: 0.3.1(prettier@3.5.3)
+        specifier: 0.3.2
+        version: 0.3.2(prettier@3.5.3)
       prettier-plugin-packagejson:
         specifier: 2.5.10
         version: 2.5.10(prettier@3.5.3)
@@ -3771,8 +3771,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-plugin-curly@0.3.1:
-    resolution: {integrity: sha512-GU3JJ4DB+j2gNA+8SxiyuAOuqalFu+JrX9JMNChTEwvgLCs+XXu2WJ1NbP1uK57Cbz04E2OhrkDpQFLMH5MsXg==}
+  prettier-plugin-curly@0.3.2:
+    resolution: {integrity: sha512-1Ay7dVzOxFTIfnepaJ+wQTosIVIj2fSuh19S0DiMXn2nQxIjimWOJoeZ+pe5MvbtD95NKi2zinrgsHall5V7Mw==}
     engines: {node: '>=18'}
     peerDependencies:
       prettier: ^2 || ^3
@@ -8633,7 +8633,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-curly@0.3.1(prettier@3.5.3):
+  prettier-plugin-curly@0.3.2(prettier@3.5.3):
     dependencies:
       '@babel/generator': 7.27.0
       '@babel/parser': 7.27.0
