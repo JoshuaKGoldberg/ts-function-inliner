@@ -40,8 +40,8 @@ importers:
         specifier: 0.5.0
         version: 0.5.0
       create-typescript-app:
-        specifier: 2.36.2
-        version: 2.36.2(bingo-systems@0.5.4)(typescript@5.8.3)
+        specifier: 2.38.0
+        version: 2.38.0(bingo-systems@0.5.4)(typescript@5.8.3)
       cspell:
         specifier: 8.18.1
         version: 8.18.1
@@ -1919,8 +1919,8 @@ packages:
       typescript:
         optional: true
 
-  create-typescript-app@2.36.2:
-    resolution: {integrity: sha512-BzS7yA+VxLNAVbuNJebsYULj7UBDaEEo3dDlsv+T+ZXfOOEc8MVhmI0taFIgrGYvXlDsIqZSO3dXKqLHV+I4bw==}
+  create-typescript-app@2.38.0:
+    resolution: {integrity: sha512-Fy37Puh2TWf9+YZK4AgigtlkW7y7r8iU8vx7YvkG9OsSr/ISYVYxQmrmRPJuhHhkzlfuKYRvBe6C6tU7AFyBcg==}
     engines: {node: '>=18.3.0'}
     hasBin: true
 
@@ -3415,6 +3415,7 @@ packages:
 
   mvdan-sh@0.10.1:
     resolution: {integrity: sha512-kMbrH0EObaKmK3nVRKUIIya1dpASHIEusM13S4V1ViHFuxuNxCo+arxoa6j/dbV22YBGjl7UKJm9QQKJ2Crzhg==}
+    deprecated: See https://github.com/mvdan/sh/issues/1145
 
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
@@ -6478,7 +6479,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.8.3
 
-  create-typescript-app@2.36.2(bingo-systems@0.5.4)(typescript@5.8.3):
+  create-typescript-app@2.38.0(bingo-systems@0.5.4)(typescript@5.8.3):
     dependencies:
       '@typescript-eslint/typescript-estree': 8.29.1(typescript@5.8.3)
       bingo: 0.5.15
