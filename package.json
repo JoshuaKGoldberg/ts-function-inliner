@@ -43,7 +43,7 @@
 		"@prettier/sync": "^0.5.0",
 		"@release-it/conventional-changelog": "10.0.0",
 		"@types/eslint-plugin-markdown": "2.0.2",
-		"@types/node": "22.14.0",
+		"@types/node": "22.14.1",
 		"@vitest/coverage-v8": "3.1.1",
 		"@vitest/eslint-plugin": "1.1.42",
 		"console-fail-test": "0.5.0",
