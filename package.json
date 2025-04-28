@@ -50,7 +50,7 @@
 		"create-typescript-app": "2.41.2",
 		"cspell": "8.19.1",
 		"eslint": "9.25.1",
-		"eslint-plugin-jsdoc": "50.6.10",
+		"eslint-plugin-jsdoc": "50.6.11",
 		"eslint-plugin-jsonc": "2.20.0",
 		"eslint-plugin-markdown": "5.1.0",
 		"eslint-plugin-n": "17.16.2",
