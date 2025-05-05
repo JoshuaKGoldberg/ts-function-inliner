@@ -39,7 +39,7 @@
 	},
 	"devDependencies": {
 		"@eslint-community/eslint-plugin-eslint-comments": "4.5.0",
-		"@eslint/js": "9.25.1",
+		"@eslint/js": "9.26.0",
 		"@prettier/sync": "^0.5.0",
 		"@release-it/conventional-changelog": "10.0.1",
 		"@types/eslint-plugin-markdown": "2.0.2",
