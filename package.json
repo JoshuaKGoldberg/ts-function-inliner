@@ -48,7 +48,7 @@
 		"@vitest/eslint-plugin": "1.1.44",
 		"console-fail-test": "0.5.0",
 		"create-typescript-app": "2.41.2",
-		"cspell": "8.19.1",
+		"cspell": "8.19.4",
 		"eslint": "9.27.0",
 		"eslint-plugin-jsdoc": "50.6.17",
 		"eslint-plugin-jsonc": "2.20.1",
