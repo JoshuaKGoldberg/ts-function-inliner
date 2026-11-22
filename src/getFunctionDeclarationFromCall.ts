@@ -1,6 +1,6 @@
 import ts from "typescript";
 
-import { isSmallFunctionLike } from "./isSmallFunctionLike.js";
+import { isSmallFunctionLike } from "./isSmallFunctionLike.ts";
 
 export function getFunctionDeclarationFromCall(
 	node: ts.CallExpression,

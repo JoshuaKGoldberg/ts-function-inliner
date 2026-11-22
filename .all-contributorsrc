@@ -26,6 +26,5 @@
   ],
   "projectName": "ts-function-inliner",
   "projectOwner": "JoshuaKGoldberg",
-  "repoType": "github",
-  "commitConvention": "angular"
+  "repoType": "github"
 }

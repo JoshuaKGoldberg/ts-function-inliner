@@ -1,6 +1,6 @@
 import ts from "typescript";
 
-import { FunctionLikeWithBody } from "./types.js";
+import { FunctionLikeWithBody } from "./types.ts";
 
 export const isFunctionWithBody = (
 	node: ts.Node,

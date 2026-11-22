@@ -1,7 +1,7 @@
 import ts from "typescript";
 
-import { getFunctionStatements } from "./getFunctionStatements.js";
-import { FunctionLikeWithBody } from "./types.js";
+import { getFunctionStatements } from "./getFunctionStatements.ts";
+import { FunctionLikeWithBody } from "./types.ts";
 
 /**
  * Inlines a small function declaration into a call to that function,

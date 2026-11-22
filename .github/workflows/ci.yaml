@@ -1,0 +1,69 @@
+jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/prepare
+      - run: pnpm build
+      - parallel:
+          - name: Build
+            run: node ./dist/index.js
+          - name: Dedupe Check
+            run: pnpm dedupe --check
+          - name: Format Check
+            run: pnpm format --list-different
+          - name: Lint
+            run: pnpm lint
+          - name: Lint GitHub Actions
+            uses: zizmorcore/zizmor-action@v0.6.4
+            with:
+              advanced-security: "false"
+              annotations: "true"
+          - name: Lint Knip
+            run: pnpm lint:knip
+          - name: Lint Knip Production
+            run: pnpm lint:knip:production
+          - name: Lint Spelling
+            run: pnpm lint:spelling
+          - name: Type Check
+            run: pnpm tsc
+
+  engines_check:
+    name: Engines Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/prepare
+      - uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version: "18"
+      - run: pnpm install --prod --engine-strict --ignore-scripts
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/prepare
+      - run: pnpm run test --coverage
+      - if: always()
+        uses: codecov/codecov-action@v5
+
+name: CI
+
+on:
+  pull_request: ~
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
