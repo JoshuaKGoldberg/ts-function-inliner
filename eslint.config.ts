@@ -20,7 +20,6 @@ export default defineConfig(
 			"coverage",
 			"dist",
 			"example/*",
-			"lib",
 			"node_modules",
 			"pnpm-lock.yaml",
 		],
@@ -72,11 +71,6 @@ export default defineConfig(
 			// https://github.com/eslint/markdown/issues/294
 			"markdown/no-missing-label-refs": "off",
 		},
-	},
-	{
-		extends: [tseslint.configs.disableTypeChecked],
-		files: ["**/*.md/*.ts"],
-		rules: { "n/no-missing-import": "off" },
 	},
 	{
 		extends: [vitest.configs.recommended],

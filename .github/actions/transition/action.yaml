@@ -13,14 +13,14 @@ runs:
     - run: npx create-typescript-app
       shell: bash
     - id: auto-commit-action
-      uses: stefanzweifel/git-auto-commit-action@v5
+      uses: stefanzweifel/git-auto-commit-action@v7
       with:
         commit_author: The Friendly Bingo Bot <bot@create.bingo>
         commit_message: Check in changes from re-running npx create-typescript-app
         commit_user_email: bot@create.bingo
         commit_user_name: The Friendly Bingo Bot
     - if: steps.auto-commit-action.outputs.changes_detected == 'true'
-      uses: mshick/add-pr-comment@v2
+      uses: mshick/add-pr-comment@v3
       with:
         issue: ${{ github.event.pull_request.number }}
         message: |-
@@ -31,7 +31,7 @@ runs:
           Cheers!
            — _The Friendly Bingo Bot_ 💝
 
-          > ℹ️ These automatic commits keep your repository up-to-date with new versions of [create-typescript-app](https://github.com/JoshuaKGoldberg/create-typescript-app). If you want to opt out, delete your `.github/workflows/cta-transitions.yaml` file.
+          > ℹ️ These automatic commits keep your repository up-to-date with new versions of [create-typescript-app](https://github.com/JoshuaKGoldberg/create-typescript-app). If you want to opt out, delete your `.github/workflows/cta.yaml` file.
     - id: package-change
       uses: JoshuaKGoldberg/package-change-detector-action@v0.0.1
       with:

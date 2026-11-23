@@ -6,7 +6,6 @@
 		"CHANGELOG.md",
 		"coverage",
 		"dist",
-		"lib",
 		"node_modules",
 		"pnpm-lock.yaml"
 	],
@@ -25,7 +24,6 @@
 		"peakoss",
 		"stefanzweifel",
 		"tseslint",
-		"tsup",
 		"zizmor",
 		"zizmorcore"
 	]
