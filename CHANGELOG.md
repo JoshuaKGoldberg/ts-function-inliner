@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.3](https://github.com/JoshuaKGoldberg/ts-function-inliner/compare/v0.2.2...v0.2.3) (2026-11-24)
+
+### Bug Fixes
+
+- **deps:** update dependency cached-factory to ^0.3.0 ([#317](https://github.com/JoshuaKGoldberg/ts-function-inliner/issues/317)) ([044adf9](https://github.com/JoshuaKGoldberg/ts-function-inliner/commit/044adf91cce16b651a30a1bdb211773e3b7771e5))
+
 ## [0.2.2](https://github.com/JoshuaKGoldberg/ts-function-inliner/compare/v0.2.1...v0.2.2) (2026-11-24)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
 	"name": "ts-function-inliner",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "TypeScript transformation that inlines calls to small functions. ⚡️",
 	"repository": {
 		"type": "git",
