@@ -22,7 +22,7 @@ importers:
         specifier: 9.0.0
         version: 9.0.0
       '@prettier/sync':
-        specifier: ^0.5.0
+        specifier: 0.5.5
         version: 0.5.5(prettier@3.9.6)
       '@release-it/conventional-changelog':
         specifier: 12.0.0
@@ -73,10 +73,10 @@ importers:
         specifier: 3.10.0
         version: 3.10.0(eslint@10.15.0(jiti@2.7.0))
       gulp:
-        specifier: ^5.0.0
+        specifier: 5.0.0
         version: 5.0.0
       gulp-typescript:
-        specifier: ^6.0.0-alpha.1
+        specifier: 6.0.0-alpha.1
         version: 6.0.0-alpha.1(typescript@5.9.3)
       husky:
         specifier: 9.1.7
