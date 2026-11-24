@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.2](https://github.com/JoshuaKGoldberg/ts-function-inliner/compare/v0.2.1...v0.2.2) (2026-11-24)
+
+### Bug Fixes
+
+- bump to create-typescript-app@2.87.19 ([#310](https://github.com/JoshuaKGoldberg/ts-function-inliner/issues/310)) ([5098ac4](https://github.com/JoshuaKGoldberg/ts-function-inliner/commit/5098ac481a98d18843227d0e633c7061140d94c9)), closes [#309](https://github.com/JoshuaKGoldberg/ts-function-inliner/issues/309)
+
 ## [0.2.1](https://github.com/JoshuaKGoldberg/ts-function-inliner/compare/v0.2.0...v0.2.1) (2025-04-03)
 
 ### Bug Fixes
