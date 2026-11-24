@@ -1,9 +1,9 @@
 import ts from "typescript";
 
-import { CollectedValue, collectValue } from "./collectValue.js";
-import { getFunctionStatements } from "./getFunctionStatements.js";
-import { isFunctionWithBody } from "./isFunctionDeclarationWithBody.js";
-import { FunctionLikeWithBody } from "./types.js";
+import { CollectedValue, collectValue } from "./collectValue.ts";
+import { getFunctionStatements } from "./getFunctionStatements.ts";
+import { isFunctionWithBody } from "./isFunctionDeclarationWithBody.ts";
+import { FunctionLikeWithBody } from "./types.ts";
 
 export const isSmallFunctionLike = (
 	node: ts.Node,

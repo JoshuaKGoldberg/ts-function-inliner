@@ -3,7 +3,7 @@ import { format } from "@prettier/sync";
 import ts from "typescript";
 import { describe, expect, test } from "vitest";
 
-import { transformerProgram } from "./transformerProgram.js";
+import { transformerProgram } from "./transformerProgram.ts";
 
 const compilerOptions: ts.CompilerOptions = {
 	module: ts.ModuleKind.ESNext,
@@ -68,7 +68,7 @@ function expectResultToEndWith(actual: string, expected: string) {
 	);
 }
 
-describe("transformerProgram", () => {
+describe(transformerProgram, () => {
 	describe("function contents", () => {
 		test("BinaryExpression", () => {
 			const result = getResult(`

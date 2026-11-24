@@ -1,7 +1,7 @@
 import gulp from "gulp";
 import ts from "gulp-typescript";
 
-import { transformerProgram } from "../lib/index.js";
+import { transformerProgram } from "../dist/index.js";
 
 gulp.task("default", function () {
 	return gulp
