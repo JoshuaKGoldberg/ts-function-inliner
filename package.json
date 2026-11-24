@@ -32,7 +32,7 @@
 		"tsc": "tsc"
 	},
 	"dependencies": {
-		"cached-factory": "^0.1.0"
+		"cached-factory": "^0.3.0"
 	},
 	"devDependencies": {
 		"@eslint-community/eslint-plugin-eslint-comments": "4.8.1",
