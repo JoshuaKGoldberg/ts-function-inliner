@@ -74,7 +74,7 @@
 		"vitest": "5.1.0"
 	},
 	"peerDependencies": {
-		"typescript": "*"
+		"typescript": "<7"
 	},
 	"packageManager": "pnpm@10.10.0",
 	"engines": {
